@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap Taza — Профессиональный Клининг в Алматы</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        },
+                        dark: {
+                            800: '#0f172a',
+                            900: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .gradient-bg {
+            background: radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
+        }
+        .active-type {
+            border-color: #16a34a !important;
+            background-color: #f0fdf4 !important;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.12);
+        }
+        .custom-checkbox:checked + div {
+            border-color: #16a34a;
+            background-color: #f0fdf4;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased gradient-bg min-h-screen selection:bg-brand-500 selection:text-white">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-brand-600/30">
+                    TT
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900">TAP TAZA</span>
+                    <span class="block text-xs text-slate-500 font-medium">Клининговая компания • Алматы</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:+77713008826" class="hidden md:flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-600 transition">
+                    <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    +7 (771) 300-88-26
+                </a>
+                <a href="#calculator" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-brand-600/20 transition-all hover:scale-[1.02]">
+                    Рассчитать стоимость
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-12 pb-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wider mb-4">
+            <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+            Онлайн-калькулятор уборок
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight max-w-3xl mx-auto leading-tight">
+            Идеальная чистота вашего пространства за 1 клик
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+            Рассчитайте точную стоимость уборки для квартиры, офиса или дома. Фиксированная цена без скрытых переплат.
+        </p>
+    </section>
+
+    <!-- Calculator Main Section -->
+    <section id="calculator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Configurator Form -->
+            <div class="lg:col-span-8 space-y-8">
+                
+                <!-- Step 1: Object Type -->
+                <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-sm">1</span>
+                        <h2 class="text-xl font-bold text-slate-900">Выберите тип объекта</h2>
+                    </div>
+                    <div class="grid grid-cols-3 gap-3 sm:gap-4">
+                        <button type="button" onclick="selectObjectType('flat')" id="btn-flat" class="object-btn active-type border-2 border-slate-200 rounded-xl p-4 text-center transition-all hover:border-brand-500">
+                            <div class="text-2xl mb-1">🏢</div>
+                            <div class="font-bold text-slate-900 text-sm sm:text-base">Квартира</div>
+                        </button>
+                        <button type="button" onclick="selectObjectType('office')" id="btn-office" class="object-btn border-2 border-slate-200 rounded-xl p-4 text-center transition-all hover:border-brand-500">
+                            <div class="text-2xl mb-1">🏢</div>
+                            <div class="font-bold text-slate-900 text-sm sm:text-base">Офис</div>
+                        </button>
+                        <button type="button" onclick="selectObjectType('house')" id="btn-house" class="object-btn border-2 border-slate-200 rounded-xl p-4 text-center transition-all hover:border-brand-500">
+                            <div class="text-2xl mb-1">🏡</div>
+                            <div class="font-bold text-slate-900 text-sm sm:text-base">Частный дом</div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Cleaning Type -->
+                <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-sm">2</span>
+                        <h2 class="text-xl font-bold text-slate-900">Вид уборки</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="cleaningType" value="standard" class="peer hidden" checked onchange="calculateTotal()">
+                            <div class="p-5 border-2 border-slate-200 rounded-xl peer-checked:border-brand-600 peer-checked:bg-brand-50/50 hover:border-slate-300 transition-all h-full">
+                                <div class="font-bold text-slate-900 mb-1">Поддерживающая</div>
+                                <div class="text-xs text-slate-500 mb-2">Стандартная влажная уборка помещений</div>
+                                <div class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-1 rounded inline-block">650 ₸ / м²</div>
+                            </div>
+                        </label>
+
+                        <label class="cursor-pointer">
+                            <input type="radio" name="cleaningType" value="general" class="peer hidden" onchange="calculateTotal()">
+                            <div class="p-5 border-2 border-slate-200 rounded-xl peer-checked:border-brand-600 peer-checked:bg-brand-50/50 hover:border-slate-300 transition-all h-full">
+                                <div class="font-bold text-slate-900 mb-1">Генеральная</div>
+                                <div class="text-xs text-slate-500 mb-2">Глубокая очистка всех поверхностей</div>
+                                <div class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-1 rounded inline-block" id="general-price-badge">950 ₸ / м²</div>
+                            </div>
+                        </label>
+
+                        <label class="cursor-pointer">
+                            <input type="radio" name="cleaningType" value="post_repair" class="peer hidden" onchange="calculateTotal()">
+                            <div class="p-5 border-2 border-slate-200 rounded-xl peer-checked:border-brand-600 peer-checked:bg-brand-50/50 hover:border-slate-300 transition-all h-full">
+                                <div class="font-bold text-slate-900 mb-1">После ремонта</div>
+                                <div class="text-xs text-slate-500 mb-2">Удаление пыли, цемента и краски</div>
+                                <div class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-1 rounded inline-block" id="repair-price-badge">1 500 ₸ / м²</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 3: Area Slider -->
+                <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-sm">3</span>
+                            <h2 class="text-xl font-bold text-slate-900">Площадь помещения</h2>
+                        </div>
+                        <div class="flex items-center gap-1 bg-white border border-slate-200 rounded-xl px-4 py-2 shadow-sm">
+                            <input type="number" id="areaInput" value="60" min="20" max="500" class="w-16 text-right font-black text-xl text-brand-600 focus:outline-none" oninput="syncSlider(this.value)">
+                            <span class="font-bold text-slate-500">м²</span>
+                        </div>
+                    </div>
+                    
+                    <input type="range" id="areaSlider" min="20" max="300" value="60" step="1" class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-600" oninput="syncInput(this.value)">
+                    <div class="flex justify-between text-xs text-slate-400 font-medium mt-2">
+                        <span>20 м²</span>
+                        <span>100 м²</span>
+                        <span>200 м²</span>
+                        <span>300+ м²</span>
+                    </div>
+                </div>
+
+                <!-- Step 4: Additional Services -->
+                <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-sm">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-sm">4</span>
+                        <h2 class="text-xl font-bold text-slate-900">Дополнительные услуги</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <!-- Extra items with counters or checkboxes -->
+                        <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
+                            <div>
+                                <div class="font-bold text-slate-800 text-sm">Холодильник (внутри)</div>
+                                <div class="text-xs text-slate-500">+ 4 500 ₸</div>
+                            </div>
+                            <input type="checkbox" id="extra-fridge" data-price="4500" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                        </div>
+
+                        <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
+                            <div>
+                                <div class="font-bold text-slate-800 text-sm">Духовка от жира</div>
+                                <div class="text-xs text-slate-500">+ 3 900 ₸</div>
+                            </div>
+                            <input type="checkbox" id="extra-oven" data-price="3900" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                        </div>
+
+                        <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
+                            <div>
+                                <div class="font-bold text-slate-800 text-sm">Кухонные шкафы (внутри)</div>
+                                <div class="text-xs text-slate-500">+ 7 000 ₸</div>
+                            </div>
+                            <input type="checkbox" id="extra-cabinets" data-price="7000" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                        </div>
+
+                        <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
+                            <div>
+                                <div class="font-bold text-slate-800 text-sm">Микроволновка</div>
+                                <div class="text-xs text-slate-500">+ 2 500 ₸</div>
+                            </div>
+                            <input type="checkbox" id="extra-microwave" data-price="2500" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                        </div>
+
+                        <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
+                            <div>
+                                <div class="font-bold text-slate-800 text-sm">Балкон / Лоджия</div>
+                                <div class="text-xs text-slate-500">+ 4 000 ₸</div>
+                            </div>
+                            <input type="checkbox" id="extra-balcony" data-price="4000" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                        </div>
+
+                        <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
+                            <div>
+                                <div class="font-bold text-slate-800 text-sm">Парогенератор</div>
+                                <div class="text-xs text-slate-500">+ 5 000 ₸</div>
+                            </div>
+                            <input type="checkbox" id="extra-steam" data-price="5000" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                        </div>
+
+                        <!-- Windows with counter -->
+                        <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50 sm:col-span-2">
+                            <div>
+                                <div class="font-bold text-slate-800 text-sm">Мойка окон (стандарт)</div>
+                                <div class="text-xs text-slate-500">2 500 ₸ / окно (2x1м с двух сторон)</div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <button type="button" onclick="changeQty('windows', -1)" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">-</button>
+                                <span id="qty-windows" class="font-bold text-slate-900 w-4 text-center">0</span>
+                                <button type="button" onclick="changeQty('windows', 1)" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">+</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Sticky Summary Card -->
+            <div class="lg:col-span-4 lg:sticky lg:top-28">
+                <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-xl border-2 border-brand-500/20 bg-white">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4 pb-3 border-b border-slate-100">Итоговый расчет</h3>
+
+                    <div class="space-y-3 text-sm text-slate-600 mb-6">
+                        <div class="flex justify-between">
+                            <span>Объект:</span>
+                            <span id="summary-object" class="font-semibold text-slate-900">Квартира</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Вид уборки:</span>
+                            <span id="summary-type" class="font-semibold text-slate-900">Поддерживающая</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Площадь:</span>
+                            <span id="summary-area" class="font-semibold text-slate-900">60 м²</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Клинеры:</span>
+                            <span id="summary-cleaners" class="font-semibold text-slate-900">1-2 клинера</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Время работы:</span>
+                            <span id="summary-time" class="font-semibold text-slate-900">~3.5 - 4 ч</span>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex justify-between items-baseline">
+                            <span class="text-slate-500">Предварительная цена:</span>
+                        </div>
+                        <div class="text-3xl sm:text-4xl font-black text-brand-600 tracking-tight" id="totalPrice">
+                            39 000 ₸
+                        </div>
+                        <div class="text-xs text-slate-400">
+                            *Минимальный чек от 35 000 ₸. Все расходные материалы и инвентарь включены.
+                        </div>
+                    </div>
+
+                    <!-- Contact details -->
+                    <div class="space-y-3 pt-4 border-t border-slate-100">
+                        <input type="text" id="custName" placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-500 text-sm">
+                        <input type="tel" id="custPhone" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-500 text-sm">
+                        
+                        <button type="button" onclick="sendOrder()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-600/30 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                            Заказать в WhatsApp
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm">© 2026 Tap Taza. Профессиональный клининг в Алматы.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentObjectType = 'flat'; // flat, office, house
+        let windowQty = 0;
+
+        const objectNames = {
+            'flat': 'Квартира',
+            'office': 'Офис',
+            'house': 'Частный дом'
+        };
+
+        const rates = {
+            'standard': { flat: 650, office: 650, house: 650 },
+            'general': { flat: 950, office: 950, house: 1000 },
+            'post_repair': { flat: 1500, office: 1500, house: 1200 }
+        };
+
+        const cleaningTypeNames = {
+            'standard': 'Поддерживающая',
+            'general': 'Генеральная',
+            'post_repair': 'После ремонта'
+        };
+
+        function selectObjectType(type) {
+            currentObjectType = type;
+            document.querySelectorAll('.object-btn').forEach(btn => btn.classList.remove('active-type'));
+            document.getElementById('btn-' + type).classList.add('active-type');
+
+            // Update badge text based on house/flat rates
+            if(type === 'house') {
+                document.getElementById('general-price-badge').innerText = '1 000 ₸ / м²';
+                document.getElementById('repair-price-badge').innerText = '1 200 ₸ / м²';
+            } else {
+                document.getElementById('general-price-badge').innerText = '950 ₸ / м²';
+                document.getElementById('repair-price-badge').innerText = '1 500 ₸ / м²';
+            }
+
+            calculateTotal();
+        }
+
+        function syncSlider(val) {
+            val = Math.max(20, Math.min(500, val));
+            document.getElementById('areaSlider').value = val;
+            calculateTotal();
+        }
+
+        function syncInput(val) {
+            document.getElementById('areaInput').value = val;
+            calculateTotal();
+        }
+
+        function changeQty(item, delta) {
+            if(item === 'windows') {
+                windowQty = Math.max(0, windowQty + delta);
+                document.getElementById('qty-windows').innerText = windowQty;
+            }
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const area = parseInt(document.getElementById('areaInput').value) || 0;
+            const cleaningType = document.querySelector('input[name="cleaningType"]:checked').value;
+
+            // Base rate
+            let rate = rates[cleaningType][currentObjectType];
+            let baseCost = area * rate;
+
+            // Min threshold check
+            let minCheck = 35000;
+            if (baseCost < minCheck) {
+                baseCost = minCheck;
+            }
+
+            // Extras
+            let extrasCost = 0;
+            const extrasList = ['fridge', 'oven', 'cabinets', 'microwave', 'balcony', 'steam'];
+            extrasList.forEach(item => {
+                const cb = document.getElementById('extra-' + item);
+                if(cb && cb.checked) {
+                    extrasCost += parseInt(cb.dataset.price);
+                }
+            });
+
+            // Windows
+            extrasCost += windowQty * 2500;
+
+            let total = baseCost + extrasCost;
+
+            // Cleaners and duration estimate
+            let cleaners = "1-2 клинера";
+            let duration = "~3-4 ч";
+
+            if (area <= 53) { cleaners = "1 клинер"; duration = "~2-3 ч"; }
+            else if (area <= 65) { cleaners = "1-2 клинера"; duration = "~3.5-4 ч"; }
+            else if (area <= 110) { cleaners = "2 клинера"; duration = "~4-6 ч"; }
+            else if (area <= 150) { cleaners = "3 клинера"; duration = "~5-7 ч"; }
+            else { cleaners = "4+ клинеров"; duration = "~6-8 ч"; }
+
+            // UI updates
+            document.getElementById('summary-object').innerText = objectNames[currentObjectType];
+            document.getElementById('summary-type').innerText = cleaningTypeNames[cleaningType];
+            document.getElementById('summary-area').innerText = area + ' м²';
+            document.getElementById('summary-cleaners').innerText = cleaners;
+            document.getElementById('summary-time').innerText = duration;
+            document.getElementById('totalPrice').innerText = total.toLocaleString('ru-RU') + ' ₸';
+        }
+
+        function sendOrder() {
+            const name = document.getElementById('custName').value.trim() || 'Клиент';
+            const phone = document.getElementById('custPhone').value.trim() || 'Не указан';
+            const obj = objectNames[currentObjectType];
+            const area = document.getElementById('areaInput').value;
+            const cType = cleaningTypeNames[document.querySelector('input[name="cleaningType"]:checked').value];
+            const total = document.getElementById('totalPrice').innerText;
+
+            let text = `Здравствуйте! Хочу заказать уборку в Tap Taza:%0A` +
+                       `👤 Имя: ${encodeURIComponent(name)}%0A` +
+                       `📞 Тел: ${encodeURIComponent(phone)}%0A` +
+                       `🏢 Объект: ${encodeURIComponent(obj)} (${area} м²)%0A` +
+                       `🧹 Вид уборки: ${encodeURIComponent(cType)}%0A` +
+                       `💰 Расчетная стоимость: ${encodeURIComponent(total)}`;
+
+            window.open(`https://wa.me/77713008826?text=${text}`, '_blank');
+        }
+
+        // Initialize calculation on load
+        calculateTotal();
+    </script>
+</body>
+</html>
+index.html
+Показан объект "index.html".
