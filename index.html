@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -70,6 +69,9 @@
                 </div>
             </div>
             <div class="flex items-center gap-4">
+                <a href="#standards" class="hidden sm:inline-block text-sm font-semibold text-slate-700 hover:text-brand-600 transition">
+                    Что входит в уборку
+                </a>
                 <a href="tel:+77713008826" class="hidden md:flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-600 transition">
                     <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                     +7 (771) 300-88-26
@@ -96,7 +98,7 @@
     </section>
 
     <!-- Calculator Main Section -->
-    <section id="calculator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <section id="calculator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             <!-- Left Configurator Form -->
@@ -190,8 +192,6 @@
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        
-                        <!-- Extra items with counters or checkboxes -->
                         <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
                             <div>
                                 <div class="font-bold text-slate-800 text-sm">Холодильник (внутри)</div>
@@ -240,7 +240,6 @@
                             <input type="checkbox" id="extra-steam" data-price="5000" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
                         </div>
 
-                        <!-- Windows with counter -->
                         <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50 sm:col-span-2">
                             <div>
                                 <div class="font-bold text-slate-800 text-sm">Мойка окон (стандарт)</div>
@@ -309,6 +308,238 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- NEW SECTION: STANDARDS & CHECKLISTS (25 POINTS EACH) -->
+    <section id="standards" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-8 border-t border-slate-200/80">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wider mb-3">
+                • Регламент качества 25 пунктов
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Что входит в стоимость уборки?
+            </h2>
+            <p class="mt-3 text-slate-600 text-sm sm:text-base">
+                Выберите вид уборки ниже, чтобы ознакомиться с подробным чек-листом работ компании Tap Taza.
+            </p>
+
+            <!-- Tabs Switcher -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mt-6">
+                <button type="button" id="std-btn-standard" onclick="switchStandardsTab('standard')" class="standards-tab-btn px-5 py-3 rounded-xl font-bold text-sm transition-all bg-brand-600 text-white shadow-md shadow-brand-600/20">
+                    Поддерживающая (25)
+                </button>
+                <button type="button" id="std-btn-general" onclick="switchStandardsTab('general')" class="standards-tab-btn px-5 py-3 rounded-xl font-bold text-sm transition-all bg-white text-slate-700 border border-slate-200 hover:border-brand-500">
+                    Генеральная (25)
+                </button>
+                <button type="button" id="std-btn-repair" onclick="switchStandardsTab('repair')" class="standards-tab-btn px-5 py-3 rounded-xl font-bold text-sm transition-all bg-white text-slate-700 border border-slate-200 hover:border-brand-500">
+                    После ремонта (25)
+                </button>
+            </div>
+        </div>
+
+        <!-- TAB 1: Поддерживающая уборка -->
+        <div id="std-tab-standard" class="standards-tab-content">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">1. Жилые и рабочие</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">9 пунктов</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">1</span> Протирка открытых горизонтальных поверхностей на высоте рук</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">2</span> Очистка внешних фасадов корпусной мебели (шкафы, тумбы)</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">3</span> Протирка рабочих столов (в офисе — без сдвига документов)</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">4</span> <strong class="text-slate-900">Дезинфекция точек касания:</strong> ручек, выключателей, кнопок</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">5</span> Обеспыливание мониторов, принтеров и оргтехники</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">6</span> Протирка телефонных трубок и клавиатур (для офисов)</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">7</span> Обеспыливание и чистка подоконников</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">8</span> Полировка зеркал и стеклянных перегородок до блеска</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">9</span> Очистка дверных полотен и наличников</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">2. Кухня</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">5 пунктов</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">10</span> Протирка внешних фасадов кухонного гарнитура</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">11</span> Мытье рабочей столешницы и кухонного фартука</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">12</span> <strong class="text-slate-900">Дезинфекция раковины и смесителя</strong></li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">13</span> Протирка плиты и вытяжки снаружи</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">14</span> Очистка внешних корпусов техники (СВЧ, холодильник)</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">3. Санузел и ванная</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">4 пункта</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">15</span> <strong class="text-slate-900">Мытье и дезинфекция</strong> унитаза и биде</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">16</span> Чистка раковины и смесителей</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">17</span> Освежающее мытье ванны и душевого поддона</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">18</span> Протирка зеркал и внешних фасадов шкафчиков</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">4. Полы и стандарты</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">7 пунктов</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">19</span> Очистка полов и мебели пылесосом Kärcher</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">20</span> Влажная уборка плинтусов по всему периметру</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">21</span> Мытье полов с учетом покрытия (ламинат, плитка)</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">22</span> Сбор и вынос мусора (до 10 кг)</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">23</span> Замена пакетов во всех мусорных корзинах</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">24</span> <strong class="text-slate-900">Цветовая кодировка салфеток</strong> (красная/зеленая)</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">25</span> Финальная проверка чистоты и фотоотчет клиенту</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TAB 2: Генеральная уборка -->
+        <div id="std-tab-general" class="standards-tab-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">1. Жилые и рабочие</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">9 пунктов</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">1</span> Удаление пыли и паутины со стен и потолков</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">2</span> Мытье люстр, светильников, бра и торшеров</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">3</span> Протирка карнизов, гардин и верха кондиционеров</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">4</span> Очистка верхов и внешних фасадов шкафов на всю высоту</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">5</span> Протирка и дезинфекция столов, тумб и декора</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">6</span> <strong class="text-slate-900">Дезинфекция ручек, розеток, выключателей</strong></li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">7</span> Обеспыливание мониторов, ТВ, оргтехники, кабелей</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">8</span> Полировка зеркал, стеклянных дверей и глянца</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">9</span> Тщательная очистка дверей, наличников и замков</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">2. Кухня</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">5 пунктов</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">10</span> Глубокая очистка фасадов гарнитура на всю высоту</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">11</span> <strong class="text-slate-900">Удаление стойкого жира</strong> с фартука и столешницы</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">12</span> Обезжиривание варочной панели, вытяжки и фильтров</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">13</span> Очистка внешних корпусов и уплотнителей техники</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">14</span> Дезинфекция раковины и мытье зоны мусорного ведра</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">3. Санузел и ванная</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">4 пункта</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">15</span> Мытье кафельной плитки на всю высоту стен</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">16</span> <strong class="text-slate-900">Удаление известкового налета</strong> и водного камня</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">17</span> Глубокая дезинфекция унитаза, биде, раковины</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">18</span> Очистка и полировка ванны, душевой и шторок</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">4. Полы и радиаторы</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">7 пунктов</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">19</span> Глубокая уборка полов и ковров пылесосом Kärcher</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">20</span> <strong class="text-slate-900">Выдувка и мытье радиаторов</strong> отопления изнутри</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">21</span> Влажная уборка плинтусов и пространств под мебелью</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">22</span> Мытье полов с профессиональными составами</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">23</span> Сбор и вынос мусора (до 10 кг) с заменой пакетов</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">24</span> Цветовая кодировка микрофибры</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">25</span> Приемка старшим клинером и фотоотчет</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TAB 3: После ремонта -->
+        <div id="std-tab-repair" class="standards-tab-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">1. Обеспыливание</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">9 пунктов</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">1</span> Обеспыливание потолков и стен пылесосом Kärcher</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">2</span> Выдувка пыли из полостей радиаторов отопления</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">3</span> Очистка вентиляционных решеток и люков</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">4</span> <strong class="text-slate-900">Удаление затирки, цемента</strong> и штукатурки</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">5</span> Удаление следов краски, лака, клея и герметика</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">6</span> <strong class="text-slate-900">Снятие защитных пленок</strong> и скотча</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">7</span> Очистка подрозетников, розеток, щитков</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">8</span> Очистка зеркал и светильников от строительной пыли</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">9</span> Обеспыливание дверных коробок, полотен, петель</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">2. Мебель и интерьер</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">5 пунктов</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">10</span> Очистка внешних поверхностей корпусной мебели</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">11</span> Влажная протирка внутренних полок пустых шкафов</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">12</span> Сухая очистка пылесосом встроенных ниш</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">13</span> Протирка элементов декора и плинтусов</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">14</span> Очистка и полировка металлических ручек</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">3. Санузлы</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">4 пункта</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">15</span> <strong class="text-slate-900">Смыв белесого строительного налета</strong> с плитки</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">16</span> Бережная очистка новой сантехники от затирки</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">17</span> Мытье и полировка ванны, душ-кабины и трапов</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">18</span> Полировка хромированных смесителей</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-base">4. Окна и полы</h3>
+                        <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-0.5 rounded-lg">7 пунктов</span>
+                    </div>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">19</span> Обеспыливание оконных профилей, рамок и пазов</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">20</span> Мытье подоконников и откосов от ленты</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">21</span> <strong class="text-slate-900">Двустороннее мытье остекления</strong> и балконов</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">22</span> Уборка полов строительным пылесосом Kärcher</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">23</span> Многоэтапное влажное мытье полов спецсредствами</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">24</span> Сбор и вынос мелкого строительного мусора (до 15 кг)</li>
+                        <li class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">25</span> Финальный прием бригадиром и фотоотчет</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -408,7 +639,7 @@
 
             // Cleaners and duration estimate
             let cleaners = "1-2 клинера";
-            let duration = "~3-4 ч";
+            let duration = "~3.5-4 ч";
 
             if (area <= 53) { cleaners = "1 клинер"; duration = "~2-3 ч"; }
             else if (area <= 65) { cleaners = "1-2 клинера"; duration = "~3.5-4 ч"; }
@@ -443,10 +674,30 @@
             window.open(`https://wa.me/77713008826?text=${text}`, '_blank');
         }
 
+        // Switch Tabs for Standards
+        function switchStandardsTab(tabName) {
+            document.querySelectorAll('.standards-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white', 'shadow-md', 'shadow-brand-600/20');
+                btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+            });
+            document.querySelectorAll('.standards-tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            const activeBtn = document.getElementById('std-btn-' + tabName);
+            if(activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+                activeBtn.classList.add('bg-brand-600', 'text-white', 'shadow-md', 'shadow-brand-600/20');
+            }
+
+            const activeContent = document.getElementById('std-tab-' + tabName);
+            if(activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+        }
+
         // Initialize calculation on load
         calculateTotal();
     </script>
 </body>
 </html>
-index.html
-Показан объект "index.html".
