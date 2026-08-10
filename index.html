@@ -24,6 +24,7 @@
                             700: '#15803d',
                             900: '#14532d',
                         },
+                        brandBlue: '#0052a5',
                         dark: {
                             800: '#0f172a',
                             900: '#020617',
@@ -57,17 +58,27 @@
 <body class="bg-slate-50 text-slate-800 font-sans antialiased gradient-bg min-h-screen selection:bg-brand-500 selection:text-white">
 
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80">
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo Group (Updated from Image) -->
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-brand-600/30">
-                    TT
-                </div>
-                <div>
-                    <span class="text-xl font-extrabold tracking-tight text-slate-900">TAP TAZA</span>
-                    <span class="block text-xs text-slate-500 font-medium">Клининговая компания • Алматы</span>
+                <img src="logo.jpg" alt="Tap Taza" class="h-12 w-auto object-contain hidden" id="brand-logo-img" onload="this.classList.remove('hidden'); document.getElementById('brand-logo-svg').classList.add('hidden');">
+                
+                <div id="brand-logo-svg" class="flex items-center gap-2.5">
+                    <svg class="h-11 w-auto" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Blue Left T -->
+                        <path d="M 35 15 C 35 10, 110 10, 110 10 C 110 10, 105 26, 82 26 L 62 26 L 46 110 C 44 118, 36 120, 28 120 L 18 120 L 36 26 L 15 26 C 10 26, 10 15, 35 15 Z" fill="#0052A5"/>
+                        <!-- Green Right T -->
+                        <path d="M 68 30 C 68 25, 142 25, 142 25 C 142 25, 137 41, 114 41 L 94 41 L 78 125 C 76 133, 68 135, 60 135 L 50 135 L 68 41 L 47 41 C 42 41, 42 30, 68 30 Z" fill="#16A34A"/>
+                    </svg>
+                    <div>
+                        <span class="text-2xl font-black tracking-tight text-[#0052a5] block leading-none">Tap Taza</span>
+                        <span class="block text-xs font-semibold text-[#0052a5] tracking-tight mt-1">bari taza bolady</span>
+                    </div>
                 </div>
             </div>
+
             <div class="flex items-center gap-4">
                 <a href="#standards" class="hidden sm:inline-block text-sm font-semibold text-slate-700 hover:text-brand-600 transition">
                     Что входит в уборку
@@ -311,10 +322,10 @@
                             <span class="text-slate-500">Предварительная цена:</span>
                         </div>
                         <div class="text-3xl sm:text-4xl font-black text-brand-600 tracking-tight" id="totalPrice">
-                            39 000 ₸
+                            50 000 ₸
                         </div>
                         <div class="text-xs text-slate-400 space-y-1">
-                            <div>*Минимальный чек от 35 000 ₸. Все расходные материалы включены.</div>
+                            <div>*Минимальный чек от 50 000 ₸. Все расходные материалы включены.</div>
                             <div>*Предоплата 20 000 ₸ обязательна для фиксирования даты и оформления заказа.</div>
                         </div>
                     </div>
@@ -585,7 +596,6 @@
             'house': 'Частный дом'
         };
 
-        // Rates updated: post_repair is now 1200 across all object types
         const rates = {
             'standard': { flat: 650, office: 650, house: 650 },
             'general': { flat: 950, office: 950, house: 1000 },
@@ -641,8 +651,8 @@
             let rate = rates[cleaningType][currentObjectType];
             let baseCost = area * rate;
 
-            // Min threshold check
-            let minCheck = 35000;
+            // Min threshold check: Updated to 50 000 KZT
+            let minCheck = 50000;
             if (baseCost < minCheck) {
                 baseCost = minCheck;
             }
@@ -734,8 +744,7 @@
                        `⏱ *Время работы:* ${encodeURIComponent(duration)}%0A` +
                        `➕ *Доп. услуги в заказе:* ${encodeURIComponent(extrasFormatted)}%0A${pollutionNote}%0A` +
                        `💰 *Итоговая расчетная цена:* ${encodeURIComponent(total)}%0A` +
-                       `💳 *Предоплата для бронирования:* 20 000 ₸%0A%0A` +
-                       `Подтвердите, пожалуйста, бронирование даты!`;
+                       `💳 *Предоплата для бронирования:* 20 000 ₸`;
 
             window.open(`https://wa.me/77713008826?text=${text}`, '_blank');
         }
