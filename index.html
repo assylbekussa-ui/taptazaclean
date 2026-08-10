@@ -135,28 +135,37 @@
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <label class="cursor-pointer">
                             <input type="radio" name="cleaningType" value="standard" class="peer hidden" checked onchange="calculateTotal()">
-                            <div class="p-5 border-2 border-slate-200 rounded-xl peer-checked:border-brand-600 peer-checked:bg-brand-50/50 hover:border-slate-300 transition-all h-full">
-                                <div class="font-bold text-slate-900 mb-1">Поддерживающая</div>
-                                <div class="text-xs text-slate-500 mb-2">Стандартная влажная уборка помещений</div>
-                                <div class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-1 rounded inline-block">650 ₸ / м²</div>
+                            <div class="p-5 border-2 border-slate-200 rounded-xl peer-checked:border-brand-600 peer-checked:bg-brand-50/50 hover:border-slate-300 transition-all h-full flex flex-col justify-between">
+                                <div>
+                                    <div class="font-bold text-slate-900 mb-1">Поддерживающая</div>
+                                    <div class="text-xs text-slate-500 mb-2">Стандартная влажная уборка помещений</div>
+                                </div>
+                                <div class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-1 rounded inline-block self-start">650 ₸ / м²</div>
                             </div>
                         </label>
 
                         <label class="cursor-pointer">
                             <input type="radio" name="cleaningType" value="general" class="peer hidden" onchange="calculateTotal()">
-                            <div class="p-5 border-2 border-slate-200 rounded-xl peer-checked:border-brand-600 peer-checked:bg-brand-50/50 hover:border-slate-300 transition-all h-full">
-                                <div class="font-bold text-slate-900 mb-1">Генеральная</div>
-                                <div class="text-xs text-slate-500 mb-2">Глубокая очистка всех поверхностей</div>
-                                <div class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-1 rounded inline-block" id="general-price-badge">950 ₸ / м²</div>
+                            <div class="p-5 border-2 border-slate-200 rounded-xl peer-checked:border-brand-600 peer-checked:bg-brand-50/50 hover:border-slate-300 transition-all h-full flex flex-col justify-between">
+                                <div>
+                                    <div class="font-bold text-slate-900 mb-1">Генеральная</div>
+                                    <div class="text-xs text-slate-500 mb-2">Глубокая очистка всех поверхностей</div>
+                                </div>
+                                <div class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-1 rounded inline-block self-start" id="general-price-badge">950 ₸ / м²</div>
                             </div>
                         </label>
 
                         <label class="cursor-pointer">
                             <input type="radio" name="cleaningType" value="post_repair" class="peer hidden" onchange="calculateTotal()">
-                            <div class="p-5 border-2 border-slate-200 rounded-xl peer-checked:border-brand-600 peer-checked:bg-brand-50/50 hover:border-slate-300 transition-all h-full">
-                                <div class="font-bold text-slate-900 mb-1">После ремонта</div>
-                                <div class="text-xs text-slate-500 mb-2">Удаление пыли, цемента и краски</div>
-                                <div class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-1 rounded inline-block" id="repair-price-badge">1 500 ₸ / м²</div>
+                            <div class="p-5 border-2 border-slate-200 rounded-xl peer-checked:border-brand-600 peer-checked:bg-brand-50/50 hover:border-slate-300 transition-all h-full flex flex-col justify-between">
+                                <div>
+                                    <div class="font-bold text-slate-900 mb-1">После ремонта</div>
+                                    <div class="text-xs text-slate-500 mb-2">Удаление пыли, цемента и краски</div>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-semibold text-brand-700 bg-brand-100 px-2 py-1 rounded inline-block" id="repair-price-badge">1 200 ₸ / м²</div>
+                                    <div class="text-[10px] text-amber-700 font-medium mt-1 leading-tight">*Цена может увеличиться при сильном загрязнении</div>
+                                </div>
                             </div>
                         </label>
                     </div>
@@ -197,7 +206,7 @@
                                 <div class="font-bold text-slate-800 text-sm">Холодильник (внутри)</div>
                                 <div class="text-xs text-slate-500">+ 4 500 ₸</div>
                             </div>
-                            <input type="checkbox" id="extra-fridge" data-price="4500" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                            <input type="checkbox" id="extra-fridge" data-price="4500" data-name="Холодильник (внутри)" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
                         </div>
 
                         <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
@@ -205,7 +214,7 @@
                                 <div class="font-bold text-slate-800 text-sm">Духовка от жира</div>
                                 <div class="text-xs text-slate-500">+ 3 900 ₸</div>
                             </div>
-                            <input type="checkbox" id="extra-oven" data-price="3900" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                            <input type="checkbox" id="extra-oven" data-price="3900" data-name="Духовка от жира" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
                         </div>
 
                         <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
@@ -213,7 +222,7 @@
                                 <div class="font-bold text-slate-800 text-sm">Кухонные шкафы (внутри)</div>
                                 <div class="text-xs text-slate-500">+ 7 000 ₸</div>
                             </div>
-                            <input type="checkbox" id="extra-cabinets" data-price="7000" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                            <input type="checkbox" id="extra-cabinets" data-price="7000" data-name="Кухонные шкафы (внутри)" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
                         </div>
 
                         <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
@@ -221,7 +230,7 @@
                                 <div class="font-bold text-slate-800 text-sm">Микроволновка</div>
                                 <div class="text-xs text-slate-500">+ 2 500 ₸</div>
                             </div>
-                            <input type="checkbox" id="extra-microwave" data-price="2500" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                            <input type="checkbox" id="extra-microwave" data-price="2500" data-name="Микроволновка" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
                         </div>
 
                         <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
@@ -229,7 +238,7 @@
                                 <div class="font-bold text-slate-800 text-sm">Балкон / Лоджия</div>
                                 <div class="text-xs text-slate-500">+ 4 000 ₸</div>
                             </div>
-                            <input type="checkbox" id="extra-balcony" data-price="4000" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                            <input type="checkbox" id="extra-balcony" data-price="4000" data-name="Балкон / Лоджия" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
                         </div>
 
                         <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50">
@@ -237,7 +246,7 @@
                                 <div class="font-bold text-slate-800 text-sm">Парогенератор</div>
                                 <div class="text-xs text-slate-500">+ 5 000 ₸</div>
                             </div>
-                            <input type="checkbox" id="extra-steam" data-price="5000" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
+                            <input type="checkbox" id="extra-steam" data-price="5000" data-name="Парогенератор" class="w-5 h-5 accent-brand-600 cursor-pointer" onchange="calculateTotal()">
                         </div>
 
                         <div class="p-4 border border-slate-200 rounded-xl flex items-center justify-between bg-white/50 sm:col-span-2">
@@ -262,7 +271,7 @@
                 <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-xl border-2 border-brand-500/20 bg-white">
                     <h3 class="text-lg font-bold text-slate-900 mb-4 pb-3 border-b border-slate-100">Итоговый расчет</h3>
 
-                    <div class="space-y-3 text-sm text-slate-600 mb-6">
+                    <div class="space-y-3 text-sm text-slate-600 mb-4">
                         <div class="flex justify-between">
                             <span>Объект:</span>
                             <span id="summary-object" class="font-semibold text-slate-900">Квартира</span>
@@ -283,14 +292,30 @@
                             <span>Время работы:</span>
                             <span id="summary-time" class="font-semibold text-slate-900">~3.5 - 4 ч</span>
                         </div>
-                        <div class="pt-3 border-t border-slate-100 flex justify-between items-baseline">
+                        
+                        <!-- Selected Extras List -->
+                        <div class="pt-2 border-t border-slate-100">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">Доп. услуги:</span>
+                            <div id="summary-extras" class="text-xs text-slate-700 space-y-1">
+                                <span class="text-slate-400 italic">Не выбраны</span>
+                            </div>
+                        </div>
+
+                        <!-- Prepayment Banner -->
+                        <div class="bg-brand-50 border border-brand-200 rounded-xl p-3 flex justify-between items-center my-3">
+                            <div class="text-xs font-bold text-brand-900">Предоплата для брони:</div>
+                            <div class="text-sm font-extrabold text-brand-700">20 000 ₸</div>
+                        </div>
+
+                        <div class="pt-2 border-t border-slate-100 flex justify-between items-baseline">
                             <span class="text-slate-500">Предварительная цена:</span>
                         </div>
                         <div class="text-3xl sm:text-4xl font-black text-brand-600 tracking-tight" id="totalPrice">
                             39 000 ₸
                         </div>
-                        <div class="text-xs text-slate-400">
-                            *Минимальный чек от 35 000 ₸. Все расходные материалы и инвентарь включены.
+                        <div class="text-xs text-slate-400 space-y-1">
+                            <div>*Минимальный чек от 35 000 ₸. Все расходные материалы включены.</div>
+                            <div>*Предоплата 20 000 ₸ обязательна для фиксирования даты и оформления заказа.</div>
                         </div>
                     </div>
 
@@ -560,10 +585,11 @@
             'house': 'Частный дом'
         };
 
+        // Rates updated: post_repair is now 1200 across all object types
         const rates = {
             'standard': { flat: 650, office: 650, house: 650 },
             'general': { flat: 950, office: 950, house: 1000 },
-            'post_repair': { flat: 1500, office: 1500, house: 1200 }
+            'post_repair': { flat: 1200, office: 1200, house: 1200 }
         };
 
         const cleaningTypeNames = {
@@ -577,13 +603,12 @@
             document.querySelectorAll('.object-btn').forEach(btn => btn.classList.remove('active-type'));
             document.getElementById('btn-' + type).classList.add('active-type');
 
-            // Update badge text based on house/flat rates
             if(type === 'house') {
                 document.getElementById('general-price-badge').innerText = '1 000 ₸ / м²';
                 document.getElementById('repair-price-badge').innerText = '1 200 ₸ / м²';
             } else {
                 document.getElementById('general-price-badge').innerText = '950 ₸ / м²';
-                document.getElementById('repair-price-badge').innerText = '1 500 ₸ / м²';
+                document.getElementById('repair-price-badge').innerText = '1 200 ₸ / м²';
             }
 
             calculateTotal();
@@ -622,18 +647,27 @@
                 baseCost = minCheck;
             }
 
-            // Extras
+            // Extras & Selected list for summary UI
             let extrasCost = 0;
+            let selectedExtrasNames = [];
             const extrasList = ['fridge', 'oven', 'cabinets', 'microwave', 'balcony', 'steam'];
+            
             extrasList.forEach(item => {
                 const cb = document.getElementById('extra-' + item);
                 if(cb && cb.checked) {
-                    extrasCost += parseInt(cb.dataset.price);
+                    const price = parseInt(cb.dataset.price);
+                    const name = cb.dataset.name;
+                    extrasCost += price;
+                    selectedExtrasNames.push(`${name} (+${price.toLocaleString('ru-RU')} ₸)`);
                 }
             });
 
             // Windows
-            extrasCost += windowQty * 2500;
+            if(windowQty > 0) {
+                const winPrice = windowQty * 2500;
+                extrasCost += winPrice;
+                selectedExtrasNames.push(`Мойка окон (${windowQty} шт. = ${winPrice.toLocaleString('ru-RU')} ₸)`);
+            }
 
             let total = baseCost + extrasCost;
 
@@ -654,22 +688,54 @@
             document.getElementById('summary-cleaners').innerText = cleaners;
             document.getElementById('summary-time').innerText = duration;
             document.getElementById('totalPrice').innerText = total.toLocaleString('ru-RU') + ' ₸';
+
+            // Extras summary list UI update
+            const extrasContainer = document.getElementById('summary-extras');
+            if(selectedExtrasNames.length > 0) {
+                extrasContainer.innerHTML = selectedExtrasNames.map(ext => `<div class="font-medium text-slate-800">• ${ext}</div>`).join('');
+            } else {
+                extrasContainer.innerHTML = `<span class="text-slate-400 italic">Не выбраны</span>`;
+            }
         }
 
         function sendOrder() {
-            const name = document.getElementById('custName').value.trim() || 'Клиент';
+            const name = document.getElementById('custName').value.trim() || 'Не указано';
             const phone = document.getElementById('custPhone').value.trim() || 'Не указан';
             const obj = objectNames[currentObjectType];
             const area = document.getElementById('areaInput').value;
-            const cType = cleaningTypeNames[document.querySelector('input[name="cleaningType"]:checked').value];
+            const cTypeKey = document.querySelector('input[name="cleaningType"]:checked').value;
+            const cType = cleaningTypeNames[cTypeKey];
             const total = document.getElementById('totalPrice').innerText;
+            const cleaners = document.getElementById('summary-cleaners').innerText;
+            const duration = document.getElementById('summary-time').innerText;
 
-            let text = `Здравствуйте! Хочу заказать уборку в Tap Taza:%0A` +
-                       `👤 Имя: ${encodeURIComponent(name)}%0A` +
-                       `📞 Тел: ${encodeURIComponent(phone)}%0A` +
-                       `🏢 Объект: ${encodeURIComponent(obj)} (${area} м²)%0A` +
-                       `🧹 Вид уборки: ${encodeURIComponent(cType)}%0A` +
-                       `💰 Расчетная стоимость: ${encodeURIComponent(total)}`;
+            // Collect selected extra services for WhatsApp message
+            let selectedExtrasText = [];
+            const extrasList = ['fridge', 'oven', 'cabinets', 'microwave', 'balcony', 'steam'];
+            extrasList.forEach(item => {
+                const cb = document.getElementById('extra-' + item);
+                if(cb && cb.checked) {
+                    selectedExtrasText.push(`${cb.dataset.name} (+${parseInt(cb.dataset.price).toLocaleString('ru-RU')} ₸)`);
+                }
+            });
+            if(windowQty > 0) {
+                selectedExtrasText.push(`Мойка окон (${windowQty} шт. = ${(windowQty * 2500).toLocaleString('ru-RU')} ₸)`);
+            }
+
+            let extrasFormatted = selectedExtrasText.length > 0 ? selectedExtrasText.join(', ') : 'Без доп. услуг';
+            let pollutionNote = cTypeKey === 'post_repair' ? '%0A⚠️ *Примечание:* Цена после ремонта может корректироваться по степени загрязнения.%0A' : '';
+
+            let text = `Здравствуйте! Хочу оформить заказ на уборку в Tap Taza:%0A%0A` +
+                       `👤 *Имя:* ${encodeURIComponent(name)}%0A` +
+                       `📞 *Телефон:* ${encodeURIComponent(phone)}%0A` +
+                       `🏢 *Объект:* ${encodeURIComponent(obj)} (${area} м²)%0A` +
+                       `🧹 *Вид уборки:* ${encodeURIComponent(cType)}%0A` +
+                       `👥 *Кол-во клинеров:* ${encodeURIComponent(cleaners)}%0A` +
+                       `⏱ *Время работы:* ${encodeURIComponent(duration)}%0A` +
+                       `➕ *Доп. услуги в заказе:* ${encodeURIComponent(extrasFormatted)}%0A${pollutionNote}%0A` +
+                       `💰 *Итоговая расчетная цена:* ${encodeURIComponent(total)}%0A` +
+                       `💳 *Предоплата для бронирования:* 20 000 ₸%0A%0A` +
+                       `Подтвердите, пожалуйста, бронирование даты!`;
 
             window.open(`https://wa.me/77713008826?text=${text}`, '_blank');
         }
