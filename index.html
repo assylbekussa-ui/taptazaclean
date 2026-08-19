@@ -53,12 +53,36 @@
             border-color: #16a34a;
             background-color: #f0fdf4;
         }
+
+        /* Wheel CSS */
+        .wheel-pointer {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 20px solid #0f172a;
+            z-index: 20;
+        }
+        .wheel-canvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 4s cubic-bezier(0.15, 0.99, 0.35, 1);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased gradient-bg min-h-screen selection:bg-brand-500 selection:text-white">
 
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80">
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
             <!-- Brand Logo Group -->
@@ -85,13 +109,13 @@
                     <svg class="w-4 h-4 fill-emerald-500" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                     Отзывы
                 </a>
-                <a href="tel:+77713008826" class="hidden md:flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-600 transition">
+                <a href="tel:+77710719375" class="hidden md:flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-600 transition">
                     <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                    +7 (771) 300-88-26
+                    +7 (771) 071-93-75
                 </a>
-                <a href="#calculator" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-brand-600/20 transition-all hover:scale-[1.02]">
-                    Рассчитать стоимость
-                </a>
+                <button onclick="openWheelModal()" class="bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-1.5 animate-bounce">
+                    <span>🎁</span> Получить скидку
+                </button>
             </div>
         </div>
     </header>
@@ -311,6 +335,18 @@
                             <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">Доп. услуги:</span>
                             <div id="summary-extras" class="text-xs text-slate-700 space-y-1">
                                 <span class="text-slate-400 italic">Не выбраны</span>
+                            </div>
+                        </div>
+
+                        <!-- Active Prize Banner with 5-min Timer -->
+                        <div id="summary-prize-badge" class="hidden bg-amber-50 border border-amber-300 rounded-xl p-3 my-3">
+                            <div class="flex justify-between items-center mb-1">
+                                <div class="text-xs font-bold text-amber-900">Ваш подарок:</div>
+                                <div class="text-xs font-extrabold text-amber-700" id="summary-prize-name">-</div>
+                            </div>
+                            <div class="flex justify-between items-center text-[11px] text-amber-800 pt-1 border-t border-amber-200/60">
+                                <span>Успейте забронировать:</span>
+                                <span id="timer-display" class="font-black text-rose-600 bg-rose-100 px-2 py-0.5 rounded animate-pulse">05:00</span>
                             </div>
                         </div>
 
@@ -589,6 +625,35 @@
         </a>
     </section>
 
+    <!-- Floating Wheel Trigger Button -->
+    <button onclick="openWheelModal()" class="fixed bottom-6 right-6 z-40 bg-brand-600 hover:bg-brand-700 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95 border-2 border-white">
+        <span class="text-2xl">🎁</span>
+    </button>
+
+    <!-- Unclosable Wheel Modal (Forced Spin on Landing) -->
+    <div id="wheelModal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl relative animate-fade-in border-4 border-brand-500/30">
+            
+            <h2 class="text-xl font-black text-slate-900 mb-1">Подарок от Tap Taza 🧹</h2>
+            <p class="text-xs text-slate-500 mb-6">Крутите колесо — выигрыш гарантирован, проигрышных секторов нет!</p>
+
+            <div class="relative w-[260px] h-[260px] mx-auto mb-6">
+                <div class="wheel-pointer"></div>
+                <canvas id="wheelCanvas" width="260" height="260" class="wheel-canvas"></canvas>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full z-10 flex items-center justify-center shadow-md text-xl">🎁</div>
+            </div>
+
+            <button id="spinBtn" onclick="spinWheel()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-brand-600/30 transition-all text-base">
+                Крутить колесо
+            </button>
+            
+            <!-- Claim button (Hidden initially) -->
+            <button id="claimBtn" onclick="claimPrize()" class="hidden w-full bg-amber-500 hover:bg-amber-600 text-white font-black py-4 rounded-xl shadow-lg shadow-amber-500/30 transition-all text-base animate-bounce">
+                🎁 Забрать подарок
+            </button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 text-center">
@@ -597,8 +662,11 @@
     </footer>
 
     <script>
-        let currentObjectType = 'flat'; // flat, office, house
+        let currentObjectType = 'flat'; 
         let windowQty = 0;
+        let wonPrize = null;
+        let isTimerActive = false;
+        let timerInterval = null;
 
         const objectNames = {
             'flat': 'Квартира',
@@ -618,6 +686,124 @@
             'post_repair': 'После ремонта'
         };
 
+        // WHEEL LOGIC
+        const sectors = [
+            { label: "Мойка окна в 🎁", color: "#3CB371" },       // Индекс 0
+            { label: "Химчистка дивана 🎁", color: "#2E8B57" },  // Индекс 1
+            { label: "Мойка холодильника 🎁", color: "#1E824C" },// Индекс 2
+            { label: "Парогенератор 🎁", color: "#E67E22" },      // Индекс 3
+            { label: "-15% скидка на всё 🔥", color: "#2E8B57" }  // Индекс 4 (ВЫИГРЫШНЫЙ)
+        ];
+
+        const winningIndex = 4; // Выигрышный сектор (-15% скидка на всё)
+        let currentRotation = 0;
+
+        function drawWheel() {
+            const canvas = document.getElementById('wheelCanvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const numSectors = sectors.length;
+            const arc = (2 * Math.PI) / numSectors;
+            const radius = canvas.width / 2;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < numSectors; i++) {
+                const angle = i * arc - Math.PI / 2;
+                
+                ctx.beginPath();
+                ctx.fillStyle = sectors[i].color;
+                ctx.moveTo(radius, radius);
+                ctx.arc(radius, radius, radius, angle, angle + arc);
+                ctx.lineTo(radius, radius);
+                ctx.fill();
+
+                ctx.save();
+                ctx.translate(radius, radius);
+                ctx.rotate(angle + arc / 2);
+                ctx.textAlign = "right";
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "bold 10px sans-serif";
+                ctx.fillText(sectors[i].label, radius - 12, 4);
+                ctx.restore();
+            }
+        }
+
+        function openWheelModal() {
+            document.getElementById('wheelModal').classList.remove('hidden');
+            drawWheel();
+        }
+
+        function closeWheelModal() {
+            document.getElementById('wheelModal').classList.add('hidden');
+        }
+
+        function startPrizeTimer(durationSeconds) {
+            let timer = durationSeconds;
+            const timerDisplay = document.getElementById('timer-display');
+            
+            if (timerInterval) clearInterval(timerInterval);
+            isTimerActive = true;
+
+            timerInterval = setInterval(() => {
+                const minutes = Math.floor(timer / 60);
+                const seconds = timer % 60;
+
+                const displayMinutes = minutes < 10 ? '0' + minutes : minutes;
+                const displaySeconds = seconds < 10 ? '0' + seconds : seconds;
+
+                timerDisplay.innerText = `${displayMinutes}:${displaySeconds}`;
+
+                if (--timer < 0) {
+                    clearInterval(timerInterval);
+                    isTimerActive = false;
+                    timerDisplay.innerText = "Истёк";
+                    timerDisplay.className = "font-black text-slate-500 bg-slate-200 px-2 py-0.5 rounded";
+                    document.getElementById('summary-prize-name').innerText = "Срок действия скидки истек";
+                }
+            }, 1000);
+        }
+
+        function spinWheel() {
+            const spinBtn = document.getElementById('spinBtn');
+            const canvas = document.getElementById('wheelCanvas');
+            
+            spinBtn.disabled = true;
+            spinBtn.innerText = "Крутим...";
+
+            const sectorDegrees = 360 / sectors.length;
+            const targetDegree = 360 - (winningIndex * sectorDegrees + sectorDegrees / 2);
+            const totalRotation = currentRotation + 1800 + (targetDegree - (currentRotation % 360)); 
+            
+            canvas.style.transform = `rotate(${totalRotation}deg)`;
+            currentRotation = totalRotation;
+
+            setTimeout(() => {
+                wonPrize = sectors[winningIndex].label;
+                
+                // Переключаем кнопки
+                spinBtn.classList.add('hidden');
+                const claimBtn = document.getElementById('claimBtn');
+                claimBtn.classList.remove('hidden');
+                claimBtn.innerText = `🎁 Забрать: ${wonPrize}`;
+            }, 4000);
+        }
+
+        function claimPrize() {
+            closeWheelModal();
+            
+            // Отображение подарка в итоговой карточке
+            document.getElementById('summary-prize-badge').classList.remove('hidden');
+            document.getElementById('summary-prize-name').innerText = wonPrize;
+            
+            // Запуск 5-минутного таймера
+            startPrizeTimer(300);
+
+            // Плавный скролл к калькулятору
+            document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // CALCULATOR LOGIC
         function selectObjectType(type) {
             currentObjectType = type;
             document.querySelectorAll('.object-btn').forEach(btn => btn.classList.remove('active-type'));
@@ -657,17 +843,14 @@
             const area = parseInt(document.getElementById('areaInput').value) || 0;
             const cleaningType = document.querySelector('input[name="cleaningType"]:checked').value;
 
-            // Base rate
             let rate = rates[cleaningType][currentObjectType];
             let baseCost = area * rate;
 
-            // Min threshold check
             let minCheck = 50000;
             if (baseCost < minCheck) {
                 baseCost = minCheck;
             }
 
-            // Extras & Selected list for summary UI
             let extrasCost = 0;
             let selectedExtrasNames = [];
             const extrasList = ['fridge', 'oven', 'cabinets', 'microwave', 'balcony', 'steam'];
@@ -682,7 +865,6 @@
                 }
             });
 
-            // Windows
             if(windowQty > 0) {
                 const winPrice = windowQty * 2500;
                 extrasCost += winPrice;
@@ -691,7 +873,6 @@
 
             let total = baseCost + extrasCost;
 
-            // Cleaners and duration estimate
             let cleaners = "1-2 клинера";
             let duration = "~3.5-4 ч";
 
@@ -701,7 +882,6 @@
             else if (area <= 150) { cleaners = "3 клинера"; duration = "~5-7 ч"; }
             else { cleaners = "4+ клинеров"; duration = "~6-8 ч"; }
 
-            // UI updates
             document.getElementById('summary-object').innerText = objectNames[currentObjectType];
             document.getElementById('summary-type').innerText = cleaningTypeNames[cleaningType];
             document.getElementById('summary-area').innerText = area + ' м²';
@@ -709,7 +889,6 @@
             document.getElementById('summary-time').innerText = duration;
             document.getElementById('totalPrice').innerText = total.toLocaleString('ru-RU') + ' ₸';
 
-            // Extras summary list UI update
             const extrasContainer = document.getElementById('summary-extras');
             if(selectedExtrasNames.length > 0) {
                 extrasContainer.innerHTML = selectedExtrasNames.map(ext => `<div class="font-medium text-slate-800">• ${ext}</div>`).join('');
@@ -729,7 +908,6 @@
             const cleaners = document.getElementById('summary-cleaners').innerText;
             const duration = document.getElementById('summary-time').innerText;
 
-            // Collect selected extra services for WhatsApp message
             let selectedExtrasText = [];
             const extrasList = ['fridge', 'oven', 'cabinets', 'microwave', 'balcony', 'steam'];
             extrasList.forEach(item => {
@@ -744,6 +922,16 @@
 
             let extrasFormatted = selectedExtrasText.length > 0 ? selectedExtrasText.join(', ') : 'Без доп. услуг';
             let pollutionNote = cTypeKey === 'post_repair' ? '%0A⚠️ *Примечание:* Цена после ремонта может корректироваться по степени загрязнения.%0A' : '';
+            
+            // Проверка успел ли по таймеру
+            let giftNote = '';
+            if (wonPrize) {
+                if (isTimerActive) {
+                    giftNote = `%0A🎁 *Забронированный подарок (колесо):* ${wonPrize}%0A`;
+                } else {
+                    giftNote = `%0A⚠️ *Подарок с колеса:* Срок действия скидки истек%0A`;
+                }
+            }
 
             let text = `Здравствуйте! Хочу оформить заказ на уборку в Tap Taza:%0A%0A` +
                        `👤 *Имя:* ${encodeURIComponent(name)}%0A` +
@@ -752,14 +940,15 @@
                        `🧹 *Вид уборки:* ${encodeURIComponent(cType)}%0A` +
                        `👥 *Кол-во клинеров:* ${encodeURIComponent(cleaners)}%0A` +
                        `⏱ *Время работы:* ${encodeURIComponent(duration)}%0A` +
-                       `➕ *Доп. услуги в заказе:* ${encodeURIComponent(extrasFormatted)}%0A${pollutionNote}%0A` +
+                       `➕ *Доп. услуги в заказе:* ${encodeURIComponent(extrasFormatted)}%0A` +
+                       `${giftNote}${pollutionNote}%0A` +
                        `💰 *Итоговая расчетная цена:* ${encodeURIComponent(total)}%0A` +
                        `💳 *Предоплата для бронирования:* 20 000 ₸`;
 
-            window.open(`https://wa.me/77713008826?text=${text}`, '_blank');
+            // Отправка на ваш новый номер 87710719375
+            window.open(`https://wa.me/77710719375?text=${text}`, '_blank');
         }
 
-        // Switch Tabs for Standards
         function switchStandardsTab(tabName) {
             document.querySelectorAll('.standards-tab-btn').forEach(btn => {
                 btn.classList.remove('bg-brand-600', 'text-white', 'shadow-md', 'shadow-brand-600/20');
@@ -781,8 +970,11 @@
             }
         }
 
-        // Initialize calculation on load
-        calculateTotal();
+        // Автозапуск колеса сразу при загрузке страницы
+        window.addEventListener('DOMContentLoaded', () => {
+            openWheelModal();
+            calculateTotal();
+        });
     </script>
 </body>
 </html>
