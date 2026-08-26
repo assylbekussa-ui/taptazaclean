@@ -713,11 +713,11 @@
 
         // WHEEL LOGIC
         const sectors = [
-            { label: "Мойка окна в 🎁", color: "#3CB371" },       // Индекс 0
-            { label: "Химчистка дивана 🎁", color: "#2E8B57" },  // Индекс 1
-            { label: "Мойка холодильника 🎁", color: "#1E824C" },// Индекс 2
-            { label: "Парогенератор 🎁", color: "#E67E22" },      // Индекс 3
-            { label: "-15% скидка на всё 🔥", color: "#2E8B57" }  // Индекс 4 (ВЫИГРЫШНЫЙ)
+            { label: "Мойка окна\nв 🎁", color: "#3CB371" },       // Индекс 0
+            { label: "Химчистка\nдивана 🎁", color: "#2E8B57" },  // Индекс 1
+            { label: "Мойка\nхолодильника 🎁", color: "#1E824C" },// Индекс 2
+            { label: "Парогенератор\nв 🎁", color: "#E67E22" },      // Индекс 3
+            { label: "-15% скидка\nна всё 🔥", color: "#2E8B57" }  // Индекс 4 (ВЫИГРЫШНЫЙ)
         ];
 
         const winningIndex = 4; // Выигрышный сектор (-15% скидка на всё)
@@ -748,8 +748,16 @@
                 ctx.rotate(angle + arc / 2);
                 ctx.textAlign = "right";
                 ctx.fillStyle = "#ffffff";
-                ctx.font = "bold 10px sans-serif";
-                ctx.fillText(sectors[i].label, radius - 12, 4);
+                ctx.font = "bold 11px sans-serif";
+
+                const lines = sectors[i].label.split('\n');
+                const lineHeight = 13;
+                const startY = -((lines.length - 1) * lineHeight) / 2;
+
+                lines.forEach((line, lineIdx) => {
+                    ctx.fillText(line, radius - 16, startY + (lineIdx * lineHeight) + 3);
+                });
+
                 ctx.restore();
             }
         }
@@ -815,7 +823,7 @@
             currentRotation = totalRotation;
 
             setTimeout(() => {
-                wonPrize = sectors[winningIndex].label;
+                wonPrize = sectors[winningIndex].label.replace('\n', ' ');
                 
                 spinBtn.classList.add('hidden');
                 const claimBtn = document.getElementById('claimBtn');
