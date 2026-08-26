@@ -711,7 +711,7 @@
             'post_repair': 'После ремонта'
         };
 
-        // WHEEL LOGIC
+        // WHEEL LOGIC (Горизонтальное выравнивание текста по центру секторов)
         const sectors = [
             { label: "Мойка окна\nв 🎁", color: "#3CB371" },       // Индекс 0
             { label: "Химчистка\nдивана 🎁", color: "#2E8B57" },  // Индекс 1
@@ -733,6 +733,7 @@
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
+            // 1. Отрисовка секторов
             for (let i = 0; i < numSectors; i++) {
                 const angle = i * arc - Math.PI / 2;
                 
@@ -742,20 +743,31 @@
                 ctx.arc(radius, radius, radius, angle, angle + arc);
                 ctx.lineTo(radius, radius);
                 ctx.fill();
+            }
+
+            // 2. Отрисовка текста строго горизонтально в центре каждого сектора
+            for (let i = 0; i < numSectors; i++) {
+                const angle = i * arc - Math.PI / 2;
+                const midAngle = angle + arc / 2;
+                
+                // Вычисляем координату центра сектора (62% от радиуса колеса)
+                const textRadius = radius * 0.62;
+                const x = radius + Math.cos(midAngle) * textRadius;
+                const y = radius + Math.sin(midAngle) * textRadius;
 
                 ctx.save();
-                ctx.translate(radius, radius);
-                ctx.rotate(angle + arc / 2);
-                ctx.textAlign = "right";
+                ctx.translate(x, y);
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
                 ctx.fillStyle = "#ffffff";
-                ctx.font = "bold 11px sans-serif";
+                ctx.font = "bold 11px 'Plus Jakarta Sans', sans-serif";
 
                 const lines = sectors[i].label.split('\n');
                 const lineHeight = 13;
                 const startY = -((lines.length - 1) * lineHeight) / 2;
 
                 lines.forEach((line, lineIdx) => {
-                    ctx.fillText(line, radius - 16, startY + (lineIdx * lineHeight) + 3);
+                    ctx.fillText(line, 0, startY + (lineIdx * lineHeight));
                 });
 
                 ctx.restore();
